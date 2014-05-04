@@ -156,7 +156,7 @@
 		
 		// time based tests
 		function test_time($b, &$bug, $lop=false) {
-			if($lop) return array('\=\=?', 'eq', '\!\=', 'neq?', '\<\=?', 'lt', '\>\=?', 'gt');
+			if($lop) return array('\=\=?', 'eq', '\!\=', 'neq?', '\<\=?', 'le', 'lt', '\>\=?', 'ge', 'gt');
 			global $INFO;
 			if(!$b['test'] || ($b['test'] == '') || !$b['value'] || ($b['value'] == '')) {
 				$bug = true;
@@ -180,9 +180,11 @@
 					$t = time();
 					return ($t > $this->_bt_strtotime($b['value'], $t)); break;
 				case '<=' :
+				case 'le' :
 					$t = time();
 					return ($t <= $this->_bt_strtotime($b['value'], $t)); break;
 				case '>=' :
+				case 'ge' :
 					$t = time();
 					return ($t >= $this->_bt_strtotime($b['value'], $t)); break;
 				default:
